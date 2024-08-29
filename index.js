@@ -3,10 +3,15 @@ import { PORT } from './config.js'
 import { UserRepository } from './user-repository.js'
 
 const app = express()
+app.set('view engine', 'ejs')
 app.use(express.json())
 
+// app.get('/', (req, res) => {
+//   res.sendFile(process.cwd() + '/index.html')
+// })
+
 app.get('/', (req, res) => {
-  res.sendFile(process.cwd() + '/index.html')
+  res.render('example', { username: 'ImperiumAO' })
 })
 app.post('/login', async (req, res) => {
   const { username, password } = req.body
