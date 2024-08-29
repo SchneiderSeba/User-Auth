@@ -1,10 +1,10 @@
 # 📦 User Auth
 
-This is a real-time chat
+This is a Authentication System with JSON Web Tokens
 
 ## 🚀 Demo
 
-Check out the live demo: [Live Demo Link](https://chatonlive-production.up.railway.app/)
+Check out the Auth demo: [Live Demo Link](https://chatonlive-production.up.railway.app/)
 
 
 ## 🧰 Technologies
@@ -12,7 +12,8 @@ Check out the live demo: [Live Demo Link](https://chatonlive-production.up.railw
 This project is built with:
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) 
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)  
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![JWT](https://img.shields.io/badge/JWT-JSON%20Web%20Token-blue)  
 
 
 ![Railway](https://img.shields.io/badge/Deployed_on-Railway-blueviolet?style=flat&logo=railway&logoColor=white)
