@@ -11,7 +11,7 @@ app.use(express.json())
 // })
 
 app.get('/', (req, res) => {
-  res.render('example', { username: 'ImperiumAO' })
+  res.render('main')
 })
 app.post('/login', async (req, res) => {
   const { username, password } = req.body
@@ -37,7 +37,9 @@ app.post('/register', async (req, res) => {
 })
 app.post('/logout', (req, res) => {})
 
-app.get('/protected', (req, res) => {})
+app.get('/protected', (req, res) => {
+  res.render('protected', { user: 'ImperiumAO' })
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`)
