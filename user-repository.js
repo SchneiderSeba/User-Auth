@@ -1,10 +1,10 @@
 import DBLocal from 'db-local'
 import Crypto from 'crypto'
-import Schema from 'db-local/lib/modules/schema'
+
 const { Schema } = new DBLocal({ path: './db' })
 
 const User = Schema('User', {
-  _ID: { type: String, required: true },
+  _id: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, required: true }
 })
@@ -26,6 +26,11 @@ export class UserRepository {
     }
 
     const id = Crypto.randomUUID()
+
+    User.create({ _id: id, username, password }).save()
+
+    return id
   }
+
   static login ({ username, password }) {}
 }
