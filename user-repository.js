@@ -1,5 +1,7 @@
 import DBLocal from 'db-local'
-import Crypto from 'crypto'
+import Crypto from 'node:crypto'
+import bcrypt from 'bcrypt'
+import { SALT_ROUNDS } from './config.js'
 
 const { Schema } = new DBLocal({ path: './db' })
 
@@ -10,15 +12,10 @@ const User = Schema('User', {
 })
 
 export class UserRepository {
-  static create ({ username, password }) {
+  static async create ({ username, password }) {
     // validaciones username
-    if (typeof username !== 'string' || username.length < 3) {
-      throw new Error('username must be a string with at least 3 characters')
-    }
-
-    if (typeof password !== 'string' || password.length < 6) {
-      throw new Error('password must be a string with at least 6 characters')
-    }
+    Validations.username(username)
+    Validations.password(password)
 
     const user = User.findOne({ username })
     if (user) {
@@ -26,11 +23,47 @@ export class UserRepository {
     }
 
     const id = Crypto.randomUUID()
-
-    User.create({ _id: id, username, password }).save()
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
+    User.create({
+      _id: id,
+      username,
+      password: hashedPassword
+    }).save()
 
     return id
   }
 
-  static login ({ username, password }) {}
+  static async login ({ username, password }) {
+    Validations.username(username)
+    Validations.password(password)
+
+    const user = User.findOne({ username })
+
+    if (!user) {
+      throw new Error('invalid username')
+    }
+
+    const isValid = await bcrypt.compare(password, user.password)
+    if (!isValid) {
+      throw new Error('invalid password')
+    }
+
+    const { password: _, ...publicUser } = user
+
+    return publicUser
+  }
+}
+
+class Validations {
+  static username (username) {
+    if (typeof username !== 'string' || username.length < 3) {
+      throw new Error('username must be a string with at least 3 characters')
+    }
+  }
+
+  static password (password) {
+    if (typeof password !== 'string' || password.length < 6) {
+      throw new Error('password must be a string with at least 6 characters')
+    }
+  }
 }

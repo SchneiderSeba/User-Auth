@@ -4,6 +4,16 @@ POST  http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "15673019"
+  "username": "ImperiumAO",
+  "password": "202020"
+}
+
+### Login
+
+POST  http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "ImperiumAO",
+  "password": "202020"
 }
