@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación de Usuario</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .auth-container {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: #ffffff;
+            transition: box-shadow 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #00ffff;
+        }
+        button {
+            width: 60%;
+            text-align: center;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #00ff00;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+        }
+        #close-session {
+            background-color: #ff0000 !important; 
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+        .neon-text {
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff;
+        }
+        .description {
+            color: #00ffff;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .toggle-form {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .toggle-form a {
+            color: #00ffff;
+            text-decoration: none;
+            transition: text-shadow 0.3s ease;
+        }
+        .toggle-form a:hover {
+            text-shadow: 0 0 5px #00ffff;
+        }
+        #register-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2 id="form-title">Succesfully <span class="neon-text">Accessed</span></h2>
+        <div class="button-container">
+            <button id="go">Go</button>
+        </div>
+    </div>
+
+    <script>
+        const goBoton = document.getElementById('go');
+        goBoton.addEventListener('click', () => {
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>
