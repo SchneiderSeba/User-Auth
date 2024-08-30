@@ -2,11 +2,6 @@
 
 This is a Authentication System with JSON Web Tokens
 
-## 🚀 Demo
-
-Check out the Auth demo: [Live Demo Link](https://chatonlive-production.up.railway.app/)
-
-
 ## 🧰 Technologies
 
 This project is built with:
@@ -16,7 +11,6 @@ This project is built with:
 
 
 ![JWT](https://img.shields.io/badge/JWT-JSON%20Web%20Token-blue)
-![Railway](https://img.shields.io/badge/Deployed_on-Railway-blueviolet?style=flat&logo=railway&logoColor=white)
 
 ## 📧 Contact
 
