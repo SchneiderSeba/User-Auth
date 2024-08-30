@@ -135,7 +135,8 @@
                 formTitle.innerHTML = 'Create <span class="neon-text">Account</span>';
             }
             // LIMPIAR LOS EVENTLISTENERS
-            loginForm.reset();
+            loginForm.reset()
+            loginSpan.innerHTML = ''
         });
 
         loginForm?.addEventListener('submit', function(e) {
@@ -164,7 +165,8 @@
                 }
             })
 
-
+            loginForm.reset();
+            loginSpan.innerHTML = ''
         });
 
         registerForm?.addEventListener('submit', function(e) {
@@ -199,7 +201,8 @@
                 }
             })
             
-
+            loginForm.reset();
+            loginSpan.innerHTML = ''
         });
 
         logoutButton?.addEventListener('click', function(e) {

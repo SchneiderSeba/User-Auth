@@ -1,14 +1,15 @@
 import express from 'express'
-import { PORT } from './config.js'
+import { PORT, JWT_SECRET_KEY } from './config.js'
 import { UserRepository } from './user-repository.js'
+import jwt from 'jsonwebtoken'
 
 const app = express()
 app.set('view engine', 'ejs')
 app.use(express.json())
 
-// app.get('/', (req, res) => {
-//   res.sendFile(process.cwd() + '/index.html')
-// })
+app.get('/home', (req, res) => {
+  res.sendFile(process.cwd() + '/index.html')
+})
 
 app.get('/', (req, res) => {
   res.render('main')
@@ -19,6 +20,7 @@ app.post('/login', async (req, res) => {
 
   try {
     const user = await UserRepository.login({ username, password })
+    const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET_KEY, { expiresIn: '1h' })
     res.send({ user })
   } catch (error) {
     res.status(401).send(error.message)
